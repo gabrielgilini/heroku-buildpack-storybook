@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -f $1/.storybook ]: then
+if [ -f $1/.storybook ]; then
   echo "Storybook"
   exit 0
 else
