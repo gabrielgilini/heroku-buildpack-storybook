@@ -6,4 +6,15 @@ ENV_DIR=$3
 BP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 cd $BUILD_DIR
+
+# Set the web root to the build/ directory
+if [ -f "static.json" ]
+then
+  echo '       Overwriting existing `static.json`'
+fi
+
+echo '{ "root": "build/" }' > static.json
+
+export PATH="$BUILD_DIR/.heroku/node/bin:$BUILD_DIR/.heroku/yarn/bin":$PATH
+
 npm run build-storybook
